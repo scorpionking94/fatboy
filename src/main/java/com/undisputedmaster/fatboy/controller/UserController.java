@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,15 +17,13 @@ import java.util.List;
  * Created by Swapnil.Khandizod on 26-06-2018.
  */
 @RestController
-@RequestMapping("/matrimony")
-public class LoginController {
+//@RequestMapping("/matrimony")
+public class UserController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private UserService userService;
-    private String email;
-    private String password;
 
     @ApiOperation(value = "Add a new User", notes = "Add User to DB",
             response = UserModel.class)
@@ -41,15 +38,10 @@ public class LoginController {
 
     @ApiOperation(value = "Get List of All Users", notes = "Provide Criteria For User",
             response = UserEntity.class,responseContainer = "List")
-    @GetMapping("/getAllUsers")
+    @GetMapping("/rest/getAllUsers")
     public List<UserEntity> getAllUsers(){
         return userService.findAll();
     }
 
-    @ApiOperation(value = "Verify User", notes = "Provide Email and Password Will return a Token For Valid User",
-            response = UserEntity.class)
-    @GetMapping("/login/{email}/{password}")
-    public UserModel getAllUsers(@PathVariable String email,@PathVariable String password){
-        return UserAssembler.getUserModelFromEntity(userService.findOneByEmailAndPassword(email,password));
-    }
+    
 }

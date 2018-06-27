@@ -1,6 +1,5 @@
 package com.undisputedmaster.fatboy;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

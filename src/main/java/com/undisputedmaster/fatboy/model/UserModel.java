@@ -1,8 +1,6 @@
 package com.undisputedmaster.fatboy.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.validation.constraints.NotNull;
@@ -23,8 +21,10 @@ public class UserModel {
     @JsonProperty("firstName")
     @NotNull
     private String firstName;
+    
     @JsonProperty("middleName")
     private String middleName;
+    
     @JsonProperty("lastName")
     @NotNull
     private String lastName;
