@@ -14,6 +14,8 @@ public class JwtValidator {
 	@Value("${secret.key}")
     private  String SECRET ;
 
+
+
     public JwtUser validate(String token) {
 
         JwtUser jwtUser = null;
