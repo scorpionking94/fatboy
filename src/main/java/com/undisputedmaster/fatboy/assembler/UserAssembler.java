@@ -29,6 +29,9 @@ public class UserAssembler {
         entity.setContactNumber(model.getContactNumber());
         entity.setReferredBy(model.getReferredBy());
         entity.setPaymentProvider(model.getPaymentProvider());
+        entity.setCountryCode(model.getCountryCode());
+        entity.setRating(model.getRating());
+        entity.setBalance(model.getBalance());
         return entity;
     }
 
@@ -53,6 +56,10 @@ public class UserAssembler {
         model.setContactNumber(entity.getContactNumber());
         model.setReferredBy(entity.getReferredBy());
         model.setPaymentProvider(entity.getPaymentProvider());
+        model.setCountryCode(entity.getCountryCode());
+        model.setBalance(entity.getBalance());
+        model.setRating(entity.getRating());
+
         return model;
     }
 }

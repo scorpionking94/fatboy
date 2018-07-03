@@ -1,5 +1,6 @@
 package com.undisputedmaster.fatboy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -42,7 +43,7 @@ public class UserModel {
     private String state;
     @JsonProperty("country")
     @NotNull
-    private String country;
+    private String country="INDIA";
     @JsonProperty("religion")
     private String religion;
     @JsonProperty("motherTongue")
@@ -61,6 +62,23 @@ public class UserModel {
     @JsonProperty("referredBy")
     @NotNull
     private String referredBy;
+
+    @JsonProperty("rating")
+    private int rating;
+
+    @JsonIgnore
+    private double balance=0;
+
+    @JsonProperty("countryCode")
+    private String countryCode="+91";
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
 
     public String getEmail() {
         return email;
@@ -196,5 +214,21 @@ public class UserModel {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

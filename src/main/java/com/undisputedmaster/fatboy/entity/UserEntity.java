@@ -19,12 +19,12 @@ public class UserEntity {
     private String firstName;
     private String middleName;
     private String lastName;
-
     private LocalDate dateOfBirth;
     private String currentAddress;
     private String city;
     private String state;
-    private String country="INDIA";
+    private String country;
+    private String countryCode;
     private String religion;
     private String motherTongue;
     private long aadharId;
@@ -33,7 +33,8 @@ public class UserEntity {
     private long paymentProvider;
     private String referredBy;
     private LocalDateTime createdDate;
-
+    private double balance;
+    private int rating;
 
     public String getMiddleName() {
         return middleName;
@@ -186,4 +187,30 @@ public class UserEntity {
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+
 }
