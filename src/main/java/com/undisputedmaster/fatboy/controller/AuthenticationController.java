@@ -1,6 +1,8 @@
 package com.undisputedmaster.fatboy.controller;
 
+import com.undisputedmaster.fatboy.entity.AgentEntity;
 import com.undisputedmaster.fatboy.security.model.LoginResponse;
+import com.undisputedmaster.fatboy.service.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,13 +20,15 @@ import com.undisputedmaster.fatboy.service.UserService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/matrimony")
 public class AuthenticationController {
 
 
     private JwtGenerator jwtGenerator;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AgentService agentService;
 
     public AuthenticationController(JwtGenerator jwtGenerator) {
         this.jwtGenerator = jwtGenerator;
@@ -33,7 +37,7 @@ public class AuthenticationController {
 
     @ApiOperation(value = "Verify User", notes = "Provide Email and Password Will return a Token For Valid User",
             response = LoginResponse.class)
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public LoginResponse login(@RequestBody AccountCredentials credentials){
 
         if (credentials != null && (credentials.getEmail()!=null && credentials.getPassword()!=null) ) {
@@ -41,6 +45,21 @@ public class AuthenticationController {
             if(entity !=null)
             {
                 JwtUser user = new JwtUser(entity.getEmail(),entity.getUserId().toString(),"USER");
+                return new LoginResponse(jwtGenerator.generate(user),true,"Valid Credentials with role "+user.getRole());
+            }return new LoginResponse(null,false,"Invalid Email or Password");
+        }
+        return new LoginResponse(null,false,"Empty Credentials");
+    }
+    @ApiOperation(value = "Verify Agent", notes = "Provide Email and Password Will return a Token For Valid Agent",
+            response = LoginResponse.class)
+    @PostMapping("/auth/agentLogin")
+    public LoginResponse agentLogin(@RequestBody AccountCredentials credentials){
+
+        if (credentials != null && (credentials.getEmail()!=null && credentials.getPassword()!=null) ) {
+            AgentEntity entity=agentService.findOneByEmailAndPassword(credentials.getEmail(),credentials.getPassword());
+            if(entity !=null)
+            {
+                JwtUser user = new JwtUser(entity.getEmail(),entity.getAgentId().toString(),"AGENT");
                 return new LoginResponse(jwtGenerator.generate(user),true,"Valid Credentials with role "+user.getRole());
             }return new LoginResponse(null,false,"Invalid Email or Password");
         }

@@ -1,17 +1,16 @@
 package com.undisputedmaster.fatboy.assembler;
 
-import com.undisputedmaster.fatboy.entity.UserEntity;
-import com.undisputedmaster.fatboy.model.UserModel;
+import com.undisputedmaster.fatboy.entity.AgentEntity;
+import com.undisputedmaster.fatboy.model.AgentModel;
 
 /**
- * Created by Swapnil.Khandizod on 26-06-2018.
+ * Created by Swapnil.Khandizod on 05-07-2018.
  */
-public class UserAssembler {
-
-    public static UserEntity getUserEntityFromModel(UserModel model){
-        if(model==null)
-            return null;
-        UserEntity entity = new UserEntity();
+public class AgentAssembler {
+    public static AgentEntity getAgentEntityFromModel(AgentModel model){
+    if(null== model)
+        return null;
+        AgentEntity entity = new AgentEntity();
         entity.setEmail(model.getEmail());
         entity.setPassword(model.getPassword());
         entity.setFirstName(model.getFirstName());
@@ -23,8 +22,6 @@ public class UserAssembler {
         entity.setCity(model.getCity());
         entity.setCountry(model.getCountry());
         entity.setState(model.getState());
-        entity.setReligion(model.getReligion());
-        entity.setMotherTongue(model.getMotherTongue());
         entity.setAadharId(model.getAadharId());
         entity.setPanId(model.getPanId());
         entity.setContactNumber(model.getContactNumber());
@@ -33,13 +30,13 @@ public class UserAssembler {
         entity.setCountryCode(model.getCountryCode());
         entity.setRating(model.getRating());
         entity.setBalance(model.getBalance());
+        entity.setProfileCount(model.getProfileCount());
         return entity;
     }
 
-    public static UserModel getUserModelFromEntity(UserEntity entity){
-        if(entity==null)
-            return null;
-        UserModel model = new UserModel();
+    public static AgentModel getAgentModelFromEntity(AgentEntity entity){
+        if(null==entity)return null;
+        AgentModel model = new AgentModel();
         model.setEmail(entity.getEmail());
         model.setPassword(entity.getPassword());
         model.setFirstName(entity.getFirstName());
@@ -51,8 +48,6 @@ public class UserAssembler {
         model.setCity(entity.getCity());
         model.setCountry(entity.getCountry());
         model.setState(entity.getState());
-        model.setReligion(entity.getReligion());
-        model.setMotherTongue(entity.getMotherTongue());
         model.setAadharId(entity.getAadharId());
         model.setPanId(entity.getPanId());
         model.setContactNumber(entity.getContactNumber());
@@ -61,7 +56,7 @@ public class UserAssembler {
         model.setCountryCode(entity.getCountryCode());
         model.setBalance(entity.getBalance());
         model.setRating(entity.getRating());
-
+        model.setProfileCount(entity.getProfileCount());
         return model;
     }
 }

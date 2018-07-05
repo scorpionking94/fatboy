@@ -19,6 +19,7 @@ public class UserEntity {
     private String firstName;
     private String middleName;
     private String lastName;
+    private String gender;
     private LocalDate dateOfBirth;
     private String currentAddress;
     private String city;
@@ -194,6 +195,14 @@ public class UserEntity {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public int getRating() {
