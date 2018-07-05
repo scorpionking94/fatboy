@@ -29,7 +29,7 @@ public class UserController {
 
     @ApiOperation(value = "Add a new User", notes = "Add User to DB",
             response = UserModel.class)
-    @PostMapping("/addUser")
+    @PostMapping("/user/addUser")
     public ModelMap  registerUserToDb(@RequestBody UserModel model) {
         if(null!=userService.findOneByEmail(model.getEmail()))
             return new ModelMap("Error","Email Already Present");
@@ -42,7 +42,7 @@ public class UserController {
     }
     @ApiOperation(value = "Get List of All Users", notes = "Provide Criteria For User",
             response = UserEntity.class,responseContainer = "List")
-    @GetMapping("/rest/getAllUsers")
+    @GetMapping("/rest/user/getAllUsers")
     public List<UserEntity> getAllUsers(){
         return userService.findAll();
     }

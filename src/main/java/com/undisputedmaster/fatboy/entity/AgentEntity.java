@@ -1,88 +1,47 @@
-package com.undisputedmaster.fatboy.model;
+package com.undisputedmaster.fatboy.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
- * Created by Swapnil.Khandizod on 26-06-2018.
+ * Created by Swapnil.Khandizod on 05-07-2018.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
-
-public class UserModel {
-
-    @JsonProperty("email")
-    @NotNull
+@Document
+public class AgentEntity {
+    @Id
+    private UUID agentId;
     private String email;
-    @JsonProperty("password")
-    @NotNull
     private String password;
-    @JsonProperty("firstName")
-    @NotNull
     private String firstName;
-    
-    @JsonProperty("middleName")
     private String middleName;
-    
-    @JsonProperty("lastName")
-    @NotNull
     private String lastName;
-
-    @JsonProperty("gender")
-    @NotNull
-    private String gender;
-
-    @JsonProperty("dateOfBirth")
-    @NotNull
     private LocalDate dateOfBirth;
-    @JsonProperty("address")
-    @NotNull
+    private String gender;
     private String currentAddress;
-    @JsonProperty("city")
-    @NotNull
     private String city;
-    @JsonProperty("state")
-    @NotNull
     private String state;
-    @JsonProperty("country")
-    @NotNull
-    private String country="INDIA";
-    @JsonProperty("religion")
-    private String religion;
-    @JsonProperty("motherTongue")
-    private String motherTongue;
-    @JsonProperty("aadharId")
-    @NotNull
+    private String country;
+    private String countryCode;
     private long aadharId;
-    @JsonProperty("panId")
-    @NotNull
     private String panId;
-    @JsonProperty("contactNumber")
     private long contactNumber;
-    @JsonProperty("paymentProvider")
-    @NotNull
     private long paymentProvider;
-    @JsonProperty("referredBy")
-    @NotNull
     private String referredBy;
-
-    @JsonProperty("rating")
+    private double balance;
     private int rating;
+    private long profileCount;
+    private LocalDateTime createdDate;
 
-    @JsonIgnore
-    private double balance=0;
-
-    @JsonProperty("countryCode")
-    private String countryCode="+91";
-
-    public String getCountryCode() {
-        return countryCode;
+    public UUID getAgentId() {
+        return agentId;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setAgentId(UUID agentId) {
+        this.agentId = agentId;
     }
 
     public String getEmail() {
@@ -109,6 +68,14 @@ public class UserModel {
         this.firstName = firstName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -123,6 +90,14 @@ public class UserModel {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getCurrentAddress() {
@@ -157,20 +132,12 @@ public class UserModel {
         this.country = country;
     }
 
-    public String getReligion() {
-        return religion;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setReligion(String religion) {
-        this.religion = religion;
-    }
-
-    public String getMotherTongue() {
-        return motherTongue;
-    }
-
-    public void setMotherTongue(String motherTongue) {
-        this.motherTongue = motherTongue;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public long getAadharId() {
@@ -213,12 +180,12 @@ public class UserModel {
         this.referredBy = referredBy;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public int getRating() {
@@ -229,19 +196,19 @@ public class UserModel {
         this.rating = rating;
     }
 
-    public double getBalance() {
-        return balance;
+    public long getProfileCount() {
+        return profileCount;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setProfileCount(long profileCount) {
+        this.profileCount = profileCount;
     }
 
-    public String getGender() {
-        return gender;
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 }

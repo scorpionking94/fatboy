@@ -1,89 +1,91 @@
 package com.undisputedmaster.fatboy.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+
 
 /**
- * Created by Swapnil.Khandizod on 26-06-2018.
+ * Created by Swapnil.Khandizod on 05-07-2018.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-
-public class UserModel {
+public class AgentModel {
 
     @JsonProperty("email")
     @NotNull
     private String email;
+
     @JsonProperty("password")
     @NotNull
     private String password;
+
     @JsonProperty("firstName")
     @NotNull
     private String firstName;
-    
+
     @JsonProperty("middleName")
+    @NotNull
     private String middleName;
-    
+
     @JsonProperty("lastName")
     @NotNull
     private String lastName;
+
+    @JsonProperty("dateOfBirth")
+    @NotNull
+    private LocalDate dateOfBirth;
 
     @JsonProperty("gender")
     @NotNull
     private String gender;
 
-    @JsonProperty("dateOfBirth")
-    @NotNull
-    private LocalDate dateOfBirth;
-    @JsonProperty("address")
+    @JsonProperty("currentAddress")
     @NotNull
     private String currentAddress;
+
     @JsonProperty("city")
     @NotNull
     private String city;
+
     @JsonProperty("state")
     @NotNull
     private String state;
+
     @JsonProperty("country")
-    @NotNull
     private String country="INDIA";
-    @JsonProperty("religion")
-    private String religion;
-    @JsonProperty("motherTongue")
-    private String motherTongue;
-    @JsonProperty("aadharId")
-    @NotNull
-    private long aadharId;
-    @JsonProperty("panId")
-    @NotNull
-    private String panId;
-    @JsonProperty("contactNumber")
-    private long contactNumber;
-    @JsonProperty("paymentProvider")
-    @NotNull
-    private long paymentProvider;
-    @JsonProperty("referredBy")
-    @NotNull
-    private String referredBy;
-
-    @JsonProperty("rating")
-    private int rating;
-
-    @JsonIgnore
-    private double balance=0;
 
     @JsonProperty("countryCode")
     private String countryCode="+91";
 
-    public String getCountryCode() {
-        return countryCode;
-    }
+    @JsonProperty("aadharId")
+    @NotNull
+    private long aadharId;
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
+    @JsonProperty("panId")
+    @NotNull
+    private String panId;
+
+    @JsonProperty("contactNumber")
+    @NotNull
+    private long contactNumber;
+
+    @JsonProperty("paymentProvider")
+    @NotNull
+    private long paymentProvider;
+
+    @JsonProperty("referredBy")
+    @NotNull
+    private String referredBy;
+
+    @JsonProperty("balance")
+    private double balance=0;
+
+    @JsonProperty("rating")
+    private int rating=0;
+
+    @JsonProperty("profileCount")
+    private long profileCount=0;
+
 
     public String getEmail() {
         return email;
@@ -109,6 +111,14 @@ public class UserModel {
         this.firstName = firstName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -123,6 +133,14 @@ public class UserModel {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getCurrentAddress() {
@@ -157,20 +175,12 @@ public class UserModel {
         this.country = country;
     }
 
-    public String getReligion() {
-        return religion;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setReligion(String religion) {
-        this.religion = religion;
-    }
-
-    public String getMotherTongue() {
-        return motherTongue;
-    }
-
-    public void setMotherTongue(String motherTongue) {
-        this.motherTongue = motherTongue;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public long getAadharId() {
@@ -213,12 +223,12 @@ public class UserModel {
         this.referredBy = referredBy;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public int getRating() {
@@ -229,19 +239,11 @@ public class UserModel {
         this.rating = rating;
     }
 
-    public double getBalance() {
-        return balance;
+    public long getProfileCount() {
+        return profileCount;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setProfileCount(long profileCount) {
+        this.profileCount = profileCount;
     }
 }
